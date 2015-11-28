@@ -25,7 +25,7 @@ end
 
 before do
 	@barbers=Barber.all
-	@clients=Client.all
+	@clients=Client.order('created_at DESC')
 	@contacts=Contact.all
 end
 
@@ -83,5 +83,7 @@ get '/admin' do
 end
 
 get '/barber/:id' do
+	@barber=Barber.find(params[:id])
+	@BarberClients=Client.where(barber: @barber.name)
 	erb :barber
 end
