@@ -81,3 +81,7 @@ end
 get '/admin' do
 	erb :admin
 end
+
+get '/barber/:id' do
+	erb :barber
+end
