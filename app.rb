@@ -65,7 +65,8 @@ get '/about' do
 end
 
 get '/contacts' do
-  erb :contacts
+	@contacts = Contact.new
+	erb :contacts
 end
 
 post '/contacts' do

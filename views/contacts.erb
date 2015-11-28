@@ -4,9 +4,9 @@
 <p><%= @answer %></p>
  <form action="/contacts" method="POST">
  	<label>Enter your name</label>
- 	<input type="text" name="user[name]" class="form-control" placeholder="Enter your Name" value="">
+ 	<input type="text" name="user[name]" class="form-control" placeholder="Enter your Name" value="<%= @contacts.name %>">
  	<label>Enter your Email</label>
- 	<input type="email" name="user[email]" class="form-control" placeholder="Enter your Email" value="">
+ 	<input type="email" name="user[email]" class="form-control" placeholder="Enter your Email" value="<%= @contacts.email %>">
  	<p><b>You can give us feedback here:</b></p>
     <p><textarea class="form-control" rows="3" name="user[text]"></textarea></p>
     <center>
