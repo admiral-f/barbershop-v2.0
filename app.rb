@@ -17,8 +17,16 @@ end
 class Barber < ActiveRecord::Base
 end
 
+class Contact <ActiveRecord::Base
+	validates :name, presence: true
+    validates :email, presence: true
+    validates :text, presence: true
+end
+
 before do
 	@barbers=Barber.all
+	@clients=Client.all
+	@contacts=Contact.all
 end
 
 configure do
@@ -41,11 +49,12 @@ get '/visit' do
 end
 
 post '/visit' do
-	
 	@booking = Client.new params[:client]
 	if @booking.valid?
 		@booking.save
 		@answer='We are waiting you'
+	else
+		@error='Please, give us full information'
 	end
   erb :visit
 end
@@ -56,4 +65,19 @@ end
 
 get '/contacts' do
   erb :contacts
+end
+
+post '/contacts' do
+	@contacts = Contact.new params[:user]
+	if @contacts.valid?
+		@contacts.save
+		@answer='Your message send'
+	else
+		@error='Please fill out all form'
+	end
+  	erb :contacts
+end
+
+get '/admin' do
+	erb :admin
 end

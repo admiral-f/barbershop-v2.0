@@ -4,11 +4,11 @@
 <p><%= @answer %></p>
  <form action="/contacts" method="POST">
  	<label>Enter your name</label>
- 	<input type="text" name="name" class="form-control" placeholder="Enter your Name" value="<%= @name %>">
+ 	<input type="text" name="user[name]" class="form-control" placeholder="Enter your Name" value="">
  	<label>Enter your Email</label>
- 	<input type="text" name="email" class="form-control" placeholder="Enter your Email" value="<%= @email %>">
+ 	<input type="email" name="user[email]" class="form-control" placeholder="Enter your Email" value="">
  	<p><b>You can give us feedback here:</b></p>
-    <p><textarea class="form-control" rows="3" name="text"></textarea></p>
+    <p><textarea class="form-control" rows="3" name="user[text]"></textarea></p>
     <center>
     <p><button type="submit" class="btn btn-primary">Send</button></p>
     </center>
