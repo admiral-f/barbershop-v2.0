@@ -1,0 +1,51 @@
+<h2>Our barbers</h2>
+<% @barbers.each do |barber| %>
+	<p>
+		<%= barber.name %>
+	</p>
+<% end %>
+</br>
+<h2>Clients:</h2>
+<table class="table table-condensed">
+  <thead>
+    <tr>
+   	  <th>Name</th>
+   	  <th>Phone</th>
+   	  <th>Date and time</th>
+   	  <th>Barber</th>
+   	  <th>Color</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @clients.each do |client| %>
+   <tr>
+   	  <td><%= client.name %></td>
+   	  <td><%= client.phone %></td>
+   	  <td><%= client.datestamp %></td>
+   	  <td><%= client.barber %></td>
+   	  <td style="background-color: <%= client.color %>"><%= client.color %></td>
+   </tr>
+  <% end %>
+  </tbody>
+</table>
+</br>
+<h2>Feedback:</h2>
+<table class="table table-condensed">
+  <thead>
+    <tr>
+   	  <th>Name</th>
+   	  <th>Email</th>
+   	  <th>Message</th>
+   	</tr>
+  </thead>
+  <tbody>
+  <% @contacts.each do |letter| %>
+   <tr>
+   	  <td><%= letter.name %></td>
+   	  <td><%= letter.email %></td>
+   	  <td><%= letter.text %></td>
+   	  
+   </tr>
+  <% end %>
+  </tbody>
+</table>
