@@ -54,7 +54,7 @@ post '/visit' do
 	if @booking.save
 		@answer='We are waiting you'
 	else
-		@error='Please, give us full information'
+		@error=@booking.errors.full_messages.first
 	end
   erb :visit
 end
@@ -73,7 +73,7 @@ post '/contacts' do
 	if @contacts.save
 		@answer='Your message send'
 	else
-		@error='Please fill out all form'
+		@error=@contacts.errors.full_messages.first
 	end
   	erb :contacts
 end
