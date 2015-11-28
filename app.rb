@@ -45,7 +45,8 @@ get '/' do
 end
 
 get '/visit' do
-  erb :visit
+	@booking=Client.new
+	erb :visit
 end
 
 post '/visit' do
