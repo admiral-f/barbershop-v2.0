@@ -23,6 +23,11 @@ class Contact <ActiveRecord::Base
     validates :text, presence: true
 end
 
+def is_time_free? booking
+	time=Client.where(barber: booking.barber, datestamp: booking.datestamp)
+	time.length > 0
+end
+
 before do
 	@barbers=Barber.all
 	@clients=Client.order('created_at DESC')
@@ -51,10 +56,16 @@ end
 
 post '/visit' do
 	@booking = Client.new params[:client]
-	if @booking.save
-		@answer='We are waiting you'
+	a=@booking.barber
+	b=@booking.datestamp
+	if is_time_free? @booking 
+		@error='Sorry! This time alredy busy'
 	else
-		@error=@booking.errors.full_messages.first
+		if @booking.save
+			@answer='We are waiting you'
+		else
+			@error=@booking.errors.full_messages.first
+		end
 	end
   erb :visit
 end
