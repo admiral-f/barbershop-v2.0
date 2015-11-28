@@ -51,8 +51,7 @@ end
 
 post '/visit' do
 	@booking = Client.new params[:client]
-	if @booking.valid?
-		@booking.save
+	if @booking.save
 		@answer='We are waiting you'
 	else
 		@error='Please, give us full information'
@@ -71,8 +70,7 @@ end
 
 post '/contacts' do
 	@contacts = Contact.new params[:user]
-	if @contacts.valid?
-		@contacts.save
+	if @contacts.save
 		@answer='Your message send'
 	else
 		@error='Please fill out all form'
